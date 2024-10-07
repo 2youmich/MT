@@ -115,11 +115,11 @@ function playGame(playerMove) {
 
     // Display the result
     const resultElement = document.getElementById('result');
-    let resultText = `Threw ${playerMove}.<br> Countered by ${aiMove}.<br> `;
+    let resultText = `Player threw ${playerMove}.<br> AI countered with ${aiMove}.<br> `;
     if (result === 'win') {
-        resultText += ` ${playerMove} Landed! `;
+        resultText += ` Player landed ${playerMove}! `;
     } else if (result === 'lose') {
-        resultText += ` Got hit by a ${aiMove}! `;
+        resultText += ` AI landed ${aiMove}! `;
     } else {
         resultText += "Blocked!";
     }
