@@ -208,6 +208,41 @@ function endGame(message = '') {
         finalResultElement.innerHTML = 'The Fight is a Draw!';
     }
     disableButtons();
+    document.getElementById('restart-btn').style.display = 'block'; // Show the restart button
+}
+
+function disableButtons() {
+    document.getElementById('punch-btn').disabled = true;
+    document.getElementById('kick-btn').disabled = true;
+    document.getElementById('knee-btn').disabled = true;
+    document.getElementById('elbow-btn').disabled = true;
+}
+
+function restartGame() {
+    // Reset all game variables
+    score = 0;
+    strikesLeft = 30;
+    round = 1;
+    gameOver = false;
+    playerKnockdowns = 0;
+    aiKnockdowns = 0;
+    playerTotalPoints = 0;
+    aiTotalPoints = 0;
+
+    // Update UI
+    document.getElementById('round-info').innerHTML = 'Round 1 | Strikes left: 30';
+    document.getElementById('scoreboard').innerHTML = 'Score: 0';
+    document.getElementById('final-result').innerHTML = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('player-points').innerHTML = 'Player Points: 0';
+    document.getElementById('ai-points').innerHTML = 'AI Points: 0';
+
+    // Hide the restart button and enable action buttons
+    document.getElementById('restart-btn').style.display = 'none';
+    document.getElementById('punch-btn').disabled = false;
+    document.getElementById('kick-btn').disabled = false;
+    document.getElementById('knee-btn').disabled = false;
+    document.getElementById('elbow-btn').disabled = false;
 }
 
 // Disable strike buttons after knockout or game end

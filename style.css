@@ -129,3 +129,19 @@ button:disabled {
     top: 20%;
     background-color: black; 
 }
+
+#restart-btn {
+    background-color: #0f0;
+    color: black;
+    font-weight: bold;
+    text-shadow: 2px 2px 0px #080;
+    border: 2px solid #080;
+    padding: 10px 20px;
+    margin: 20px auto;
+    display: none; /* Initially hidden */
+    cursor: pointer;
+}
+
+#restart-btn:hover {
+    background-color: #00cc00;
+}
