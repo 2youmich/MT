@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muay Thai Fight Club Game</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Muay Thai Fight Club</h1>
+        <p>Select your move:</p>
+        <div class="buttons">
+            <button id="punch-btn" onclick="playGame('Punch')">Punch</button>
+            <button id="kick-btn" onclick="playGame('Kick')">Kick</button>
+            <button id="knee-btn" onclick="playGame('Knee')">Knee</button>
+            <button id="elbow-btn" onclick="playGame('Elbow')">Elbow</button>
+        </div>
+        <div id="round-info">Round 1 | Strikes left: 30</div>
+        <div id="result"></div>
+        <div id="scoreboard">Score: 0</div>
+        <div id="final-result"></div>
+    </div>
+        <!-- Left and right message boards for knockdown and knockout -->
+<div id="player-board" class="left-board"></div>
+<div id="ai-board" class="right-board"></div>
+
+        <!-- Points boards for Player and AI -->
+<div class="left-board" id="player-points">Player<br><br> Points: 0</div>
+<div class="right-board" id="ai-points">AI<br><br> Points: 0</div>
+
+<script src="app.js"></script>    
+</body>
+
+
+
+</html>

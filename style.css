@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); /* Pixelated retro font */
+
+body {
+    font-family: 'Press Start 2P', cursive; /* Apply retro font */
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.container {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.8);
+    position: relative;
+    border: 3px solid #0f0;
+}
+
+h1 {
+    color: rgb(207, 8, 181); /* Retro neon green */
+    text-shadow: 2px 2px 0px rgb(206, 168, 159);
+    font-size: 1.5em;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+button {
+    background-color: #ffffff;
+    color: black;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    box-shadow: 2px 2px 0px #3ec508;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #ffaa00;
+}
+
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+#round-info {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #0ec0d8;
+}
+
+#final-result {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #f3a805;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(58, 192, 31);
+}
+
+#scoreboard {
+    top: 80px;
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #99bcd1;
+    text-shadow: 2px 2px 0px #496986;
+}
+
+.knockdown {
+    color: red;
+    text-shadow: 2px 2px 0px #800;
+}
+
+.knockout {
+    color: rgb(224, 169, 18);
+    text-shadow: 2px 2px 0px #080;
+}
+
+.left-board, .right-board {
+    position: absolute;
+    top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: black;   
+}
+
+.left-board {
+    left: 20px;
+    text-align: left;
+}
+
+.right-board {
+    right: 20px;
+    text-align: right;
+}
+
+#player-points {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(21, 5, 243);
+    text-shadow: 2px 2px 0px rgb(12, 1, 104);
+}
+
+#ai-points {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(248, 10, 10);
+    text-shadow: 2px 2px 0px rgb(105, 1, 1);
+}
+
+#player-board, #ai-board {
+    color: rgb(172, 36, 65);
+    text-shadow: 2px 2px 0px rgb(212, 15, 41);
+    top: 20%;
+    background-color: black; 
+}
