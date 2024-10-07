@@ -77,6 +77,7 @@ function checkForKnockdowns() {
         if (aiKnockdowns === 3) {
             aiBoard.innerHTML = `AI KO'd!`;
             endGame('Player Wins by Knockout!');
+            document.getElementById('restart-btn').style.display = 'block'; // Show the restart button
         }
     } else if (score <= -100) {
         playerKnockdowns++;
@@ -85,6 +86,7 @@ function checkForKnockdowns() {
         if (playerKnockdowns === 3) {
             playerBoard.innerHTML = `Player KO'd!`;
             endGame('AI Wins by Knockout!');
+            document.getElementById('restart-btn').style.display = 'block'; // Show the restart button
         }
     }
 }
@@ -145,6 +147,12 @@ function endRound() {
     if (aiKnockdowns > 0 && playerKnockdowns > 0 && aiKnockdowns === playerKnockdowns ) {
         playerTotalPoints += 10;
         aiTotalPoints += 10;
+    } else if (aiKnockdowns > playerKnockdowns) {
+        playerTotalPoints += 10;
+        aiTotalPoints += 8;
+    } else if (aiKnockdowns < playerKnockdowns) {
+        playerTotalPoints += 8;
+        aiTotalPoints += 10;           
     } else if (aiKnockdowns > 0 && playerKnockdowns > 0 && aiKnockdowns > playerKnockdowns) {
         playerTotalPoints += 10;
         aiTotalPoints += 8;             
@@ -160,10 +168,7 @@ function endRound() {
     } else if (score = 0) {
         playerTotalPoints += 9;
         aiTotalPoints += 9;
-    }
-
-    // Check for knockdowns to adjust points
-    
+    }    
 
     // Update points display
     playerPointsElement.innerHTML = `Player Points: ${playerTotalPoints}`;
@@ -236,6 +241,8 @@ function restartGame() {
     document.getElementById('result').innerHTML = '';
     document.getElementById('player-points').innerHTML = 'Player Points: 0';
     document.getElementById('ai-points').innerHTML = 'AI Points: 0';
+    document.getElementById('player-board').innerHTML = '';
+    document.getElementById('ai-board').innerHTML = '';
 
     // Hide the restart button and enable action buttons
     document.getElementById('restart-btn').style.display = 'none';
