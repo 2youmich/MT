@@ -12,17 +12,12 @@ body {
     background-color: #111;
     padding: 20px;
     border-radius: 10px;
-    width: 500px;
+    width: 700px;
+    height: 200px;
     margin: 0 auto;
     box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.8);
     position: relative;
     border: 3px solid #0f0;
-}
-
-h1 {
-    color: rgb(207, 8, 181); /* Retro neon green */
-    text-shadow: 2px 2px 0px rgb(206, 168, 159);
-    font-size: 1.5em;
 }
 
 .buttons {
@@ -32,14 +27,14 @@ h1 {
 button {
     background-color: #ffffff;
     color: black;
-    padding: 10px 20px;
-    margin: 5px;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin-left: 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 1.0em;
     box-shadow: 2px 2px 0px #3ec508;
-    text-transform: uppercase;
 }
 
 button:hover {
@@ -60,14 +55,15 @@ button:disabled {
 
 #final-result {
     margin-top: 20px;
-    font-size: 1.1em;
+    font-size: 1.0em;
     font-weight: bold;
     color: #f3a805;
 }
 
 #result {
+    top: 20%;
     margin-top: 20px;
-    font-size: 1.1em;
+    font-size: 0.8em;
     font-weight: bold;
     color: rgb(58, 192, 31);
 }
@@ -75,7 +71,7 @@ button:disabled {
 #scoreboard {
     top: 80px;
     margin-top: 20px;
-    font-size: 1.3em;
+    font-size: 1.1em;
     font-weight: bold;
     color: #99bcd1;
     text-shadow: 2px 2px 0px #496986;
@@ -94,7 +90,7 @@ button:disabled {
 .left-board, .right-board {
     position: absolute;
     top: 20px;
-    font-size: 1.2em;
+    font-size: 1.0em;
     font-weight: bold;
     background-color: black;   
 }
@@ -110,14 +106,14 @@ button:disabled {
 }
 
 #player-points {
-    font-size: 1.2em;
+    font-size: 1.0em;
     font-weight: bold;
     color: rgb(21, 5, 243);
     text-shadow: 2px 2px 0px rgb(12, 1, 104);
 }
 
 #ai-points {
-    font-size: 1.2em;
+    font-size: 1.0em;
     font-weight: bold;
     color: rgb(248, 10, 10);
     text-shadow: 2px 2px 0px rgb(105, 1, 1);
@@ -131,12 +127,14 @@ button:disabled {
 }
 
 #restart-btn {
+    position: absolute;
+    left: 1%;
     background-color: #0f0;
     color: black;
     font-weight: bold;
-    text-shadow: 2px 2px 0px #080;
     border: 2px solid #080;
-    padding: 10px 20px;
+    padding: 5px 10px;
+    font-size: 0.8em;
     margin: 20px auto;
     display: none; /* Initially hidden */
     cursor: pointer;
@@ -145,3 +143,22 @@ button:disabled {
 #restart-btn:hover {
     background-color: #00cc00;
 }
+
+.player, .ai {
+    width: 60px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 100px;
+}
+
+.player {
+    left: 500px;
+    background-color: #0400ff;
+}
+
+.ai {
+    right: 500px;
+    background-color: #ff4444;
+}   

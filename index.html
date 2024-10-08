@@ -10,7 +10,6 @@
 
 <body>
     <div class="container">
-        <h1>Muay Thai Fight Club</h1>
         <p>Select your move:</p>
         <div class="buttons">
             <button id="punch-btn" onclick="playGame('Punch')">Punch</button>
@@ -19,10 +18,12 @@
             <button id="elbow-btn" onclick="playGame('Elbow')">Elbow</button>
         </div>
         <div id="round-info">Round 1 | Strikes left: 30</div>
-        <div id="result"></div>
+        
         <div id="scoreboard">Score: 0</div>
         <div id="final-result"></div>
     </div>
+
+<div id="result"></div>    
         <!-- Left and right message boards for knockdown and knockout -->
 <div id="player-board" class="left-board"></div>
 <div id="ai-board" class="right-board"></div>
@@ -32,9 +33,14 @@
 <div class="right-board" id="ai-points">AI<br><br> Points: 0</div>
 
 <!-- Restart button, initially hidden -->
-<button id="restart-btn" onclick="restartGame()">Restart Game</button>
+<button id="restart-btn" onclick="restartGame()">Restart</button>
 
-<script src="app.js"></script>    
+<!-- Player and AI characters -->
+<div id="player" class="player"></div>
+<div id="ai" class="ai"></div>
+
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>    
 </body>
 
 </html>

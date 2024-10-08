@@ -56,7 +56,9 @@ function updateScore(playerMove, result) {
 
     if (result === 'win') {
         score += points[playerMove]; // Add points for a win
+        gsap.fromTo("#ai", { backgroundColor: "#ff4444" }, { backgroundColor: "#f3a805", duration: 0.2, yoyo: true, repeat: 1 });
     } else if (result === 'lose') {
+        gsap.fromTo("#player", { backgroundColor: "#0400ff" }, { backgroundColor: "#f3a805", duration: 0.2, yoyo: true, repeat: 1 });
         if (playerMove === 'Punch' || playerMove === 'Elbow') {
             score -= 5; // Deduct 12 points for Punch and Elbow loss
         } else {
@@ -70,20 +72,28 @@ function checkForKnockdowns() {
     const playerBoard = document.getElementById('player-board');
     const aiBoard = document.getElementById('ai-board');
 
-    if (score >= 100) {
+    if (score >= 100) {       
         aiKnockdowns++;
         score = 0;
         aiBoard.innerHTML = `Knockdown! (${aiKnockdowns})`;
-        if (aiKnockdowns === 3) {
+        if (aiKnockdowns < 3) {
+            gsap.to("#ai", { x: 50, rotate: 90, duration: 2, yoyo: true, repeat: 1 });
+        }
+        else if (aiKnockdowns === 3) {
+            gsap.to("#player", { rotate: 90, duration: 1 });
             aiBoard.innerHTML = `AI KO'd!`;
             endGame('Player Wins by Knockout!');
             document.getElementById('restart-btn').style.display = 'block'; // Show the restart button
         }
-    } else if (score <= -100) {
+    } else if (score <= -100) {      
         playerKnockdowns++;
         score = 0;
         playerBoard.innerHTML = `Knockdown! (${playerKnockdowns})`;
-        if (playerKnockdowns === 3) {
+        if (playerKnockdowns < 3) {
+            gsap.to("#player", { x: -50, rotate: -90, duration: 2, yoyo: true, repeat: 1 });
+        }
+        else if (playerKnockdowns === 3) {
+            gsap.to("#player", { rotate: 90, duration: 1 });
             playerBoard.innerHTML = `Player KO'd!`;
             endGame('AI Wins by Knockout!');
             document.getElementById('restart-btn').style.display = 'block'; // Show the restart button
@@ -115,7 +125,7 @@ function playGame(playerMove) {
 
     // Display the result
     const resultElement = document.getElementById('result');
-    let resultText = `Player threw ${playerMove}.<br><br> AI countered with ${aiMove}.<br><br> `;
+    let resultText = `Player threw ${playerMove}. AI countered with ${aiMove}. `;
     if (result === 'win') {
         resultText += ` Player landed ${playerMove}! `;
     } else if (result === 'lose') {
@@ -135,7 +145,36 @@ function playGame(playerMove) {
     } else {
         // Handle end of round logic here
         endRound();
-    }        
+    }
+
+    resetAnimations();
+    
+    // Show player move animation
+    if (playerMove === 'Punch') {
+        gsap.to("#player", { x: 50, rotate: 15, duration: 0.2, yoyo: true, repeat: 1 });
+    } else if (playerMove === 'Kick') {
+        gsap.to("#player", { x: 70, rotate: -15, duration: 0.3, yoyo: true, repeat: 1 });
+    } else if (playerMove === 'Knee') {
+        gsap.to("#player", { rotate: -15, duration: 0.2, yoyo: true, repeat: 1 });
+    } else if (playerMove === 'Elbow') {
+        gsap.to("#player", { rotate: 15, duration: 0.2, yoyo: true, repeat: 1 });
+    }
+
+    // Show ai move animation
+    if (aiMove === 'Punch') {
+        gsap.to("#ai", { x: -50, rotate: -15, duration: 0.2, yoyo: true, repeat: 1 });
+    } else if (aiMove === 'Kick') {
+        gsap.to("#ai", { x: -70, rotate: 15, duration: 0.3, yoyo: true, repeat: 1 });
+    } else if (aiMove === 'Knee') {
+        gsap.to("#ai", { rotate: 15, duration: 0.2, yoyo: true, repeat: 1 });
+    } else if (aiMove === 'Elbow') {
+        gsap.to("#ai", { rotate: -15, duration: 0.2, yoyo: true, repeat: 1 });
+    }
+}
+
+function resetAnimations() {
+    gsap.set("#player", { clearProps: "all" });
+    gsap.set("#ai", { clearProps: "all" });
 }
 
 // End the round and update points
@@ -233,6 +272,8 @@ function restartGame() {
     aiKnockdowns = 0;
     playerTotalPoints = 0;
     aiTotalPoints = 0;
+
+    resetAnimations();
 
     // Update UI
     document.getElementById('round-info').innerHTML = 'Round 1 | Strikes left: 30';
