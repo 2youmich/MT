@@ -13,7 +13,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     width: 700px;
-    height: 200px;
+    height: 220px;
     margin: 0 auto;
     box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.8);
     position: relative;
@@ -161,4 +161,14 @@ button:disabled {
 .ai {
     right: 500px;
     background-color: #ff4444;
-}   
+}
+
+#combo-moves {
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+#confirm-btn {
+    margin: 20px auto;
+    padding: 5px 10px;
+}

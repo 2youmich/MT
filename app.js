@@ -9,6 +9,7 @@ let playerTotalPoints = 0;
 let aiTotalPoints = 0;
 let gameOver = false;
 let playerMoves = [];  // Track the player's last moves
+let comboMoves = [];
 
 // The rules of the game
 function getWinner(playerMove, aiMove) {
@@ -133,7 +134,7 @@ function playGame(playerMove) {
     } else {
         resultText += "Blocked!";
     }
-    resultElement.innerHTML = resultText;
+    resultElement.innerHTML += `<br>${resultText}`;
 
     // Update the scoreboard
     document.getElementById('scoreboard').innerHTML = `Score: ${score}`;
@@ -151,24 +152,24 @@ function playGame(playerMove) {
     
     // Show player move animation
     if (playerMove === 'Punch') {
-        gsap.to("#player", { x: 50, rotate: 15, duration: 0.2, yoyo: true, repeat: 1 });
+        gsap.to("#player", { x: 50, rotate: 15, duration: 0.5, yoyo: true, repeat: 1 });
     } else if (playerMove === 'Kick') {
-        gsap.to("#player", { x: 70, rotate: -15, duration: 0.3, yoyo: true, repeat: 1 });
+        gsap.to("#player", { x: 70, rotate: -15, duration: 0.5, yoyo: true, repeat: 1 });
     } else if (playerMove === 'Knee') {
-        gsap.to("#player", { rotate: -15, duration: 0.2, yoyo: true, repeat: 1 });
+        gsap.to("#player", { rotate: -15, duration: 0.5, yoyo: true, repeat: 1 });
     } else if (playerMove === 'Elbow') {
-        gsap.to("#player", { rotate: 15, duration: 0.2, yoyo: true, repeat: 1 });
+        gsap.to("#player", { rotate: 15, duration: 0.5, yoyo: true, repeat: 1 });
     }
 
     // Show ai move animation
     if (aiMove === 'Punch') {
-        gsap.to("#ai", { x: -50, rotate: -15, duration: 0.2, yoyo: true, repeat: 1 });
+        gsap.to("#ai", { x: -50, rotate: -15, duration: 0.5, yoyo: true, repeat: 1 });
     } else if (aiMove === 'Kick') {
-        gsap.to("#ai", { x: -70, rotate: 15, duration: 0.3, yoyo: true, repeat: 1 });
+        gsap.to("#ai", { x: -70, rotate: 15, duration: 0.5, yoyo: true, repeat: 1 });
     } else if (aiMove === 'Knee') {
-        gsap.to("#ai", { rotate: 15, duration: 0.2, yoyo: true, repeat: 1 });
+        gsap.to("#ai", { rotate: 15, duration: 0.5, yoyo: true, repeat: 1 });
     } else if (aiMove === 'Elbow') {
-        gsap.to("#ai", { rotate: -15, duration: 0.2, yoyo: true, repeat: 1 });
+        gsap.to("#ai", { rotate: -15, duration: 0.5, yoyo: true, repeat: 1 });
     }
 }
 
@@ -299,4 +300,51 @@ function disableButtons() {
     document.getElementById('kick-btn').disabled = true;
     document.getElementById('knee-btn').disabled = true;
     document.getElementById('elbow-btn').disabled = true;
-}      
+}
+
+// Add selected moves to combo (max 4)
+function selectMove(move) {
+    if (comboMoves.length < 4) {
+        comboMoves.push(move);
+        updateComboDisplay();
+    }
+    if (comboMoves.length === 4) {
+        document.getElementById('confirm-btn').style.display = 'inline-block';
+    }
+}
+
+// Update the display to show selected combo
+function updateComboDisplay() {
+    document.getElementById('combo-moves').innerText = "Selected Moves: " + comboMoves.join(', ');
+}
+
+// Execute the combo using GSAP timeline
+function executeCombo() {
+    const timeline = gsap.timeline();
+
+    // Loop through combo and add each move animation to the timeline
+    comboMoves.forEach((move) => {
+        
+        if (move === 'Punch') {
+            timeline.to("#player", { onComplete: () => playGame(move) });
+        } else if (move === 'Kick') {
+            timeline.to("#player", { onComplete: () => playGame(move) });
+        } else if (move === 'Knee') {
+            timeline.to("#player", { onComplete: () => playGame(move) });
+        } else if (move === 'Elbow') {
+            timeline.to("#player", { onComplete: () => playGame(move) });
+        }
+    });
+
+    // After the combo executes reset moves
+    timeline.call(() => {
+        resetCombo();
+    });
+}
+
+// Reset the combo and UI after executing the combo
+function resetCombo() {
+    comboMoves = [];
+    document.getElementById('combo-moves').innerText = "Selected Moves: None";
+    document.getElementById('confirm-btn').style.display = 'none';
+}

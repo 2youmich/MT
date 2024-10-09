@@ -10,16 +10,16 @@
 
 <body>
     <div class="container">
-        <p>Select your move:</p>
+        <p id="combo-moves">Setup your combo:</p>
         <div class="buttons">
-            <button id="punch-btn" onclick="playGame('Punch')">Punch</button>
-            <button id="kick-btn" onclick="playGame('Kick')">Kick</button>
-            <button id="knee-btn" onclick="playGame('Knee')">Knee</button>
-            <button id="elbow-btn" onclick="playGame('Elbow')">Elbow</button>
+            <button id="punch-btn" onclick="selectMove('Punch')">Punch</button>
+            <button id="kick-btn" onclick="selectMove('Kick')">Kick</button>
+            <button id="knee-btn" onclick="selectMove('Knee')">Knee</button>
+            <button id="elbow-btn" onclick="selectMove('Elbow')">Elbow</button>
         </div>
-        <div id="round-info">Round 1 | Strikes left: 30</div>
-        
+        <div id="round-info">Round 1 | Strikes left: 30</div> 
         <div id="scoreboard">Score: 0</div>
+        <button id="confirm-btn" style="display:none;" onclick="executeCombo()">Confirm Combo</button>
         <div id="final-result"></div>
     </div>
 
