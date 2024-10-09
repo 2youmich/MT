@@ -2,9 +2,9 @@ THE RULES.
 
 Punch wins Knee. Kick wins Punch and Elbow. Knee wins Kick and Elbow. Elbow wins Punch.
 
-After every exchange Player certain score. If strike landed, certain score added, otherwise deducted.
+After every exchange Player gets certain score. If strike landed, certain score added, otherwise deducted.
 
-Player has 30 strike attempts in each round.
+Player has 28 strike attempts in each round.
 
 There are total 5 rounds.
 
