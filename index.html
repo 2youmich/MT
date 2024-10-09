@@ -17,27 +17,28 @@
             <button id="knee-btn" onclick="selectMove('Knee')">Knee</button>
             <button id="elbow-btn" onclick="selectMove('Elbow')">Elbow</button>
         </div>
-        <div id="round-info">Round 1 | Strikes left: 30</div> 
+        <div id="round-info">Round 1 | Strikes left: 28</div> 
         <div id="scoreboard">Score: 0</div>
         <button id="confirm-btn" style="display:none;" onclick="executeCombo()">Confirm Combo</button>
         <div id="final-result"></div>
-    </div>
 
-<div id="result"></div>    
-        <!-- Left and right message boards for knockdown and knockout -->
-<div id="player-board" class="left-board"></div>
-<div id="ai-board" class="right-board"></div>
+        <!-- Player and AI characters -->
+        <div id="player" class="player"></div>
+        <div id="ai" class="ai"></div>
 
         <!-- Points boards for Player and AI -->
-<div class="left-board" id="player-points">Player<br><br> Points: 0</div>
-<div class="right-board" id="ai-points">AI<br><br> Points: 0</div>
+        <div class="left-board" id="player-points">Player<br><br> Points: 0</div>
+        <div class="right-board" id="ai-points">AI<br><br> Points: 0</div>
 
-<!-- Restart button, initially hidden -->
-<button id="restart-btn" onclick="restartGame()">Restart</button>
+        <!-- Left and right message boards for knockdown and knockout -->
+        <div id="player-board" class="left-board"></div>
+        <div id="ai-board" class="right-board"></div>
 
-<!-- Player and AI characters -->
-<div id="player" class="player"></div>
-<div id="ai" class="ai"></div>
+        <!-- Restart button, initially hidden -->
+        <button id="restart-btn" onclick="restartGame()">Restart</button>
+
+        <div id="result"></div>
+    </div>
 
 <script src="app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>    
