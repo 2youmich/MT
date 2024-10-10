@@ -126,7 +126,7 @@ function playGame(playerMove) {
 
     // Display the result
     const resultElement = document.getElementById('result');
-    let resultText = `Player threw ${playerMove}. AI countered with ${aiMove}. `;
+    let resultText = `Player - ${playerMove}. AI - ${aiMove}. `;
     if (result === 'win') {
         resultText += ` Player landed ${playerMove}! `;
     } else if (result === 'lose') {
